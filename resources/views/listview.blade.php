@@ -25,14 +25,15 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
 
         {{-- search bar --}}
         <div class="my-5">
-            <form class="form">
+            {{-- <form class="form"> --}}
                 <input id="seachWord" type="text" class="seachWord" placeholder="search..." />
-                <button id="clear"
+                <button id=""
                     class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
                     onclick="search()">
                     Btn
                 </button>
-            </form>
+            {{-- </form> --}}
+            <p id="result"></p>
         </div>
 
         <table class="w-3/4 table-auto border-2 border-gray-600 " id="table">
@@ -63,12 +64,16 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
 <script>
     function search() {
         const table = document.getElementById("table");
-
         for (let row of table.rows) {
             for (let cell of row.cells) {
                 if (document.getElementById("seachWord").value == cell.innerText) {
-                    console.log(cell.innerText);
+
+                        for(let thiscell of row.cells){
+                            document.getElementById('result').innerText += thiscell.innerText;
+                        }
+
                 }
+
             }
         }
     }
