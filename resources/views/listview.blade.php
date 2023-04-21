@@ -8,7 +8,7 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -26,12 +26,12 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
         {{-- search bar --}}
         <div class="my-5">
             {{-- <form class="form"> --}}
-                <input id="seachWord" type="text" class="seachWord" placeholder="search..." />
-                <button id=""
-                    class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
-                    onclick="search()">
-                    Btn
-                </button>
+            <input id="seachWord" type="text" class="seachWord" placeholder="search..." />
+            <button id=""
+                class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
+                onclick="search()">
+                Btn
+            </button>
             {{-- </form> --}}
             <p id="result"></p>
         </div>
@@ -68,9 +68,9 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
             for (let cell of row.cells) {
                 if (document.getElementById("seachWord").value == cell.innerText) {
 
-                        for(let thiscell of row.cells){
-                            document.getElementById('result').innerText += thiscell.innerText;
-                        }
+                    for (let thiscell of row.cells) {
+                        document.getElementById('result').innerText += thiscell.innerText;
+                    }
 
                 }
 
