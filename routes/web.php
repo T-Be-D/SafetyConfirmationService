@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,9 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/confirm', function () {
-    return view(('confirm'));
-});
+Route::get('/confirm', [ConfirmController::class, 'index'])->name('confirm');
+
+Route::post('/comfirm', [ConfirmController::class, 'makePost'])->name('makePost');
 
 Route::get("/listview", function () {
     return view(("listview"));
