@@ -1,10 +1,3 @@
-<?php
-$userName = Auth::user()->name;
-$userID = Auth::user()->studentID;
-$userType = Auth::user()->profession;
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,15 +13,16 @@ $userType = Auth::user()->profession;
     <div class="border-2 border-gray-600 pt-4 px-8 pb-4 rounded-lg w-auto flex flex-col  items-center">
         <h1 class="font-bold text-4xl text-center mb-4">安否確認</h1>
 
-        <form action="" class="flex flex-col justify-start items-start">
+        {{-- form --}}
+        <form method="POST" action="" class="flex flex-col justify-start items-start">
 
             <div class="flex">
                 <h2 class=" px-5 text-2xl font-semibold">名前</h2>
-                <p class="text-2xl font-semibold">{{ $userName }} </p>
+                <p class="text-2xl font-semibold">{{ $user->name }} </p>
             </div>
             <div class="flex">
-                <h2 class="px-5 text-2xl font-semibold">{{ $userType }}</h2>
-                <p class="text-2xl font-semibold">{{ $userID }}</p>
+                <h2 class="px-5 text-2xl font-semibold">{{ $user->profession }}</h2>
+                <p class="text-2xl font-semibold">{{ $user->studentID }}</p>
             </div>
 
             <div class="my-5 px-3">
