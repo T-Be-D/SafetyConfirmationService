@@ -42,7 +42,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'status' => 0,
             'profession' => $request->profession,
-            'studentID' => $request->studentID,
+            //'studentID' => $request->studentID,
+            'studentID' => 2222222,
             'telnum' => $request->telnum
 
         ]);
