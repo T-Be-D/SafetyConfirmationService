@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('register');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('/confirm', function () {
+Route::get('/confirm', function () {
     return view(('confirm'));
 });
 

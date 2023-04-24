@@ -26,12 +26,12 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
         {{-- search bar --}}
         <div class="my-5">
             {{-- <form class="form"> --}}
-                <input id="seachWord" type="text" class="seachWord" placeholder="search..." />
-                <button id=""
-                    class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
-                    onclick="search()">
-                    Btn
-                </button>
+            <input id="seachWord" type="text" class="seachWord" placeholder="search..." />
+            <button id=""
+                class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
+                onclick="search()">
+                Btn
+            </button>
             {{-- </form> --}}
             <p id="result"></p>
         </div>
@@ -53,7 +53,7 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $l['place'] }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['message'] }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['contact'] }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">&#9989;</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600"> &#10060;</td>
                 </tr>
             @endforeach
         </table>
@@ -68,9 +68,9 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
             for (let cell of row.cells) {
                 if (document.getElementById("seachWord").value == cell.innerText) {
 
-                        for(let thiscell of row.cells){
-                            document.getElementById('result').innerText += thiscell.innerText;
-                        }
+                    for (let thiscell of row.cells) {
+                        document.getElementById('result').innerText += thiscell.innerText;
+                    }
 
                 }
 
