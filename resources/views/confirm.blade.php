@@ -1,8 +1,10 @@
 <?php
-$user = auth()->user();
+$userName = Auth::user()->name;
+$userID = Auth::user()->studentID;
+$userType = Auth::user()->profession;
 
-print_r($user);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,11 +24,11 @@ print_r($user);
 
             <div class="flex">
                 <h2 class=" px-5 text-2xl font-semibold">名前</h2>
-                <p class="text-2xl font-semibold">PlaceHolder </p>
+                <p class="text-2xl font-semibold">{{ $userName }} </p>
             </div>
             <div class="flex">
-                <h2 class="px-5 text-2xl font-semibold">学生</h2>
-                <p class="text-2xl font-semibold">クラス SK2A</p>
+                <h2 class="px-5 text-2xl font-semibold">{{ $userType }}</h2>
+                <p class="text-2xl font-semibold">{{ $userID }}</p>
             </div>
 
             <div class="my-5 px-3">
