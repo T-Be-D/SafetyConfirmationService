@@ -1,3 +1,8 @@
+<?php
+$user = auth()->user();
+
+print_r($user);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
