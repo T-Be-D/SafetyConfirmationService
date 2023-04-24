@@ -8,7 +8,7 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
