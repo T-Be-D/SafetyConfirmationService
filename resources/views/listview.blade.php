@@ -1,6 +1,10 @@
 <?php
 
-$lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全', 'message' => 'This is a message', 'contact' => '0000000'], ['name' => 'Listview test2 ', 'place' => '社内', 'status' => '安全', 'message' => 'This is a message2', 'contact' => '11111111'], ['name' => 'Listview test3 ', 'place' => '社内', 'status' => '安全', 'message' => 'This is a message3', 'contact' => '22222222']];
+$lists = [  ['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全', 'message' => 'This is a message', 'contact' => '0000000'],
+            ['name' => 'Listview test2 ', 'place' => '社内', 'status' => '安全', 'message' => 'This is a message2', 'contact' => '11111111'],
+            ['name' => 'Listview test3 ', 'place' => '社内', 'status' => '安全', 'message' => 'This is a message3', 'contact' => '22222222'],
+            ['name' => 'Listview test4 ', 'place' => '社内', 'status' => '安全', 'message' => 'This is a message', 'contact' => '4444444'],
+        ];
 
 //ok &#9989;;
 //ng &#10060;
@@ -26,11 +30,16 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
         {{-- search bar --}}
         <div class="my-5">
             {{-- <form class="form"> --}}
-            <input id="seachWord" type="text" class="seachWord" placeholder="search..." />
+            <input id="searchWord" type="text" class="seachWord" placeholder="search..." />
             <button id=""
                 class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
                 onclick="search()">
-                Btn
+                SEARCH
+            </button>
+            <button id=""
+                class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
+                onclick="reload()">
+                RELOAD
             </button>
             {{-- </form> --}}
             <p id="result"></p>
@@ -38,7 +47,7 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
 
         <table class="w-3/4 table-auto border-2 border-gray-600 " id="table">
             <thead class="border-2 border-gray-600 bg-gray-300 ">
-                <tr>
+                <tr id="th">
                     <th class="text-xl">名前 </th>
                     <th class="text-xl">場所</th>
                     <th class="text-xl">メッセージ</th>
@@ -62,20 +71,38 @@ $lists = [['name' => 'Listview test1 ', 'place' => '社内', 'status' => '安全
 
 </body>
 <script>
+    const table = document.getElementById("table");
+    let searchRow = null;
+
     function search() {
-        const table = document.getElementById("table");
+        const searchWord = document.getElementById("searchWord");
+        if(!searchWord)return;
         for (let row of table.rows) {
-            for (let cell of row.cells) {
-                if (document.getElementById("seachWord").value == cell.innerText) {
-
-                    for (let thiscell of row.cells) {
-                        document.getElementById('result').innerText += thiscell.innerText;
-                    }
-
-                }
-
+            if (row.cells[0].innerText == searchWord.value) {
+                searchRow = row;
+                console.log(searchRow);
             }
         }
+        if(!searchRow){
+                searchWord.placeholder = "input name";
+                searchWord.value = "";
+                return;
+            }
+
+        deleteTable();
+
+        table.appendChild(searchRow);
+
+    }
+
+    function deleteTable() {
+       while(table.rows.length > 1){
+        table.deleteRow(1);
+       }
+    }
+
+    function reload(){
+        location.reload();
     }
 </script>
 
