@@ -14,7 +14,7 @@
         <h1 class="font-bold text-4xl text-center mb-4">安否確認</h1>
 
         {{-- form --}}
-        <form method="POST" action="" class="flex flex-col justify-start items-start">
+        <form method="POST" action="{{ 'makepost' }}" class="flex flex-col justify-start items-start">
 
             <div class="flex">
                 <h2 class=" px-5 text-2xl font-semibold">名前</h2>

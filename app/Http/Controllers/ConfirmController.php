@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use app\Models\Post;
 
 
 class ConfirmController extends Controller
@@ -16,7 +17,8 @@ class ConfirmController extends Controller
         return view('confirm', ['user' => $user]);
     }
 
-    public function makePost()
+    public function makePost(Request $request)
     {
+        $newPost = new Post;
     }
 }

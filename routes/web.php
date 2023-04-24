@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/confirm', [ConfirmController::class, 'index'])->name('confirm');
 
-Route::post('/comfirm', [ConfirmController::class, 'makePost'])->name('makePost');
+Route::post('/makepost', [ConfirmController::class, 'makePost'])->name('makePost');
 
 Route::get("/listview", function () {
     return view(("listview"));
