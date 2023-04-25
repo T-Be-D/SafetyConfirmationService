@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('profession')->nullable();
             $table->string('telnum')->nullable();
             $table->string('class')->nullable();
-            $table->integer('studentID')->nullable();
+            $table->integer('studentID')->primary();
         });
     }
 
