@@ -29,7 +29,7 @@ class ConfirmController extends Controller
         $newPost->save();
         print_r($newPost);
 
-       
         return view('confirm', ['user' => $user]);
+       // return redirect('listview');
     }
 }
