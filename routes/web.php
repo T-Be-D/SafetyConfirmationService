@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('telnum')->nullable();
             $table->string('class')->nullable();
             $table->integer('studentID')->primary();
+            $table->unique('studentID');
         });
     }
 

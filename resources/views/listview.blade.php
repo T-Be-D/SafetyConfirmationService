@@ -5,6 +5,10 @@ $lists = [['studentID' => '0001 ', 'name' => '田中太郎', 'class' => 'SK2A', 
 $classes = array_unique(array_column($lists, 'class'));
 //ok &#9989;;
 //ng &#10060;
+
+$user = Auth::user();
+$id = Auth::id();
+print_r($id);
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +74,11 @@ $classes = array_unique(array_column($lists, 'class'));
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $l['place'] }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['message'] }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['contact'] }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600"> @if ($l['status'] == 1) &#9989;@else&#10062;@endif</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">
+                        @if ($l['status'] == 1)
+                        &#9989;@else&#10062;
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </table>

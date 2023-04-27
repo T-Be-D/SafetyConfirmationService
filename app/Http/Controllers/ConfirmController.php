@@ -14,7 +14,7 @@ class ConfirmController extends Controller
     public function index()
     {
         $user = Auth::user();
-
+        print_r($user->name);
         return view('confirm', ['user' => $user]);
     }
 
@@ -25,12 +25,21 @@ class ConfirmController extends Controller
         $newPost = new Post;
         $newPost->place = $request->place;
         $newPost->studentID = $user->studentID;
-        $newPost->message = $request->textbox;
-        $newPost->status = 1;
-        $newPost->save();
-        var_dump($newPost);
 
-        return view('confirm', ['user' => $user]);
-        // return redirect('listview');
+        if ($request->textbox != null) {
+            $newPost->message = $request->textbox;
+        } else {
+            $newPost->message = 'ブランク';
+        }
+
+        if ($request->safe == 'on') {
+            $newPost->status = 1;
+        }
+
+        $newPost->save();
+        print_r($user->id);
+
+        //return view('confirm', ['user' => $user]);
+        return redirect('listview');
     }
 }

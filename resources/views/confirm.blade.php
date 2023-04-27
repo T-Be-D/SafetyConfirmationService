@@ -10,6 +10,7 @@
 </head>
 
 <body class="flex flex-col  items-center justify-center h-screen">
+
     <div class="border-2 border-gray-600 pt-4 px-8 pb-4 rounded-lg w-auto flex flex-col  items-center">
         <h1 class="font-bold text-4xl text-center mb-4">安否確認</h1>
 
