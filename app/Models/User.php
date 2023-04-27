@@ -12,8 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'studentID';
 
-    public $primaryKey = 'studentID';
     public $incrementing = false;
     /**
      * The attributes that are mass assignable.

@@ -20,7 +20,7 @@ return new class extends Migration
 
             //外部キー
             $table->unsignedBigInteger('studentID'); // add a new unsigned big integer column
-            $table->foreign('studentID')->references('studentID')->on('users');
+            $table->foreign('studentID')->references('studentID')->on('users'); //unique
         });
     }
 

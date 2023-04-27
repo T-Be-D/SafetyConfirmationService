@@ -21,15 +21,16 @@ class ConfirmController extends Controller
     public function makePost(Request $request)
     {
         $user = Auth::user();
-        
+
         $newPost = new Post;
         $newPost->place = $request->place;
         $newPost->studentID = $user->studentID;
         $newPost->message = $request->textbox;
+        $newPost->status = 1;
         $newPost->save();
-        print_r($newPost);
+        var_dump($newPost);
 
         return view('confirm', ['user' => $user]);
-       // return redirect('listview');
+        // return redirect('listview');
     }
 }
