@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('message')->nullable();
 
             //外部キー
-            $table->unsignedBigInteger('studentID'); // add a new unsigned big integer column
+            $table->unsignedBigInteger('studentID')->unique(); // add a new unsigned big integer column
             $table->foreign('studentID')->references('studentID')->on('users'); //unique
             $table->unique('studentID');
         });
