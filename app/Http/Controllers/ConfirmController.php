@@ -37,8 +37,8 @@ class ConfirmController extends Controller
         }
 
         $newPost->save();
-        print_r($user->id);
 
+        // print_r($user->id);
         //return view('confirm', ['user' => $user]);
         return redirect('listview');
     }

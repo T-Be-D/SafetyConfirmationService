@@ -26,6 +26,10 @@ print_r($id);
 
     <div class="flex flex-col  items-center  h-screen">
         <h1 class="text-4xl m-5">Listview</h1>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
 
         {{-- search bar --}}
         <div class="my-5">

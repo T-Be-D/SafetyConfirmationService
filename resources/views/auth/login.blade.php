@@ -42,6 +42,9 @@
                 href="{{ route('register') }}">
                 Dont't have an account?
             </a>
+            @if ($errorMessage)
+                <div>{{ $errorMessage }}</div>
+            @endif
         </div>
 
     </form>
