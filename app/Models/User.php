@@ -27,7 +27,8 @@ class User extends Authenticatable
         'status',
         'profession',
         'studentID',
-        'telnum'
+        'telnum',
+        'class'
     ];
 
     /**
