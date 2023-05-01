@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ListviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,8 +34,7 @@ Route::get('/confirm', [ConfirmController::class, 'index'])->name('confirm');
 
 Route::post('/makepost', [ConfirmController::class, 'makePost'])->name('makePost');
 
-Route::get("/listview", function () {
-    return view(("listview"));
-});
+Route::get("/listview", [ListviewController::class, 'index'])->name('listview');
+Route::get("/search", [ListviewController::class, 'search'])->name('search');
 
 require __DIR__ . '/auth.php';
