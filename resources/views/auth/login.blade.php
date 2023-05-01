@@ -2,11 +2,11 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('loginReq') }}">
         @csrf
         <!-- StudentID 項目追加のみ-->
         <div>
-            <x-input-label for="student_id" :value="__('StudentID')" />
+            <x-input-label for="student_id" :value="__('Student_ID')" />
             <x-text-input id="student_id" class="block mt-1 w-full" type="number" name="student_id" placeholder="2220000"
                 :value="old('student_id')" required autofocus autocomplete="user_id" />
             <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
@@ -42,9 +42,7 @@
                 href="{{ route('register') }}">
                 Dont't have an account?
             </a>
-            @if ($errorMessage)
-                <div>{{ $errorMessage }}</div>
-            @endif
+
         </div>
 
     </form>
