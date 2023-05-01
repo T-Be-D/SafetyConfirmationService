@@ -42,14 +42,14 @@ if ($message) {
 
 <body>
 
-    <div class="flex flex-col  items-center  h-screen">
-        <h1 class="text-4xl m-5">Listview</h1>
+    <div class="flex flex-col  items-center  h-screen bg-gray-100 shadow">
+        <h1 class="text-4xl m-5 font-bold underline text-shadow-2xl">災害掲示板</h1>
 
         {{-- search bar --}}
         <div class="my-5 flex">
             <form action="search" method="GET">
-                <input type="text" class="seachWord" placeholder="search id or name..." name="nameID" />
-                <select name="class" id="class">
+                <input type="text" class="seachWord rounded" placeholder="search id or name..." name="nameID" />
+                <select name="class" id="class" class="rounded">
                     <option value="">class</option>
                     @foreach ($classes as $cl)
                         <option value="{{ $cl }}">
@@ -58,9 +58,9 @@ if ($message) {
                     @endforeach
                 </select>
                 <input type="hidden" name="status" value="0">
-                <input type="checkbox" name="status" value="1">安否
+
                 <button id="" type="submit"
-                    class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
+                    class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 rounded"
                     onclick="search()">
                     SEARCH
                 </button>
@@ -68,7 +68,7 @@ if ($message) {
             </form>
             <form action="listview" >
                 <button type="submit"
-                    class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
+                    class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 ml-1 rounded"
                     onclick="reload()">
                     RELOAD
                 </button>
@@ -76,10 +76,10 @@ if ($message) {
 
         </div>
 
-        <table class="w-3/4 table-auto border-2 border-gray-600 " id="table">
-            <thead class="border-2 border-gray-600 bg-gray-300 ">
-                <tr id="th">
-                    <th class="text-xl">STUDENTID </th>
+        <table class="w-3/4 table-auto border-2 border-black bg-white" id="table">
+            <thead class="border-2 border-black bg-black ">
+                <tr id="th" class="text-white">
+                    <th class="text-xl">学籍番号 </th>
                     <th class="text-xl">クラス </th>
                     <th class="text-xl">名前 </th>
                     <th class="text-xl">場所</th>
