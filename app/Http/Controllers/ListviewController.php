@@ -37,10 +37,22 @@ class ListviewController extends Controller
         }
 
         //クラスとステータスの条件
+        if($request->class && $request->status)
+        {
+            $message = "double";
+            $status = $request->status - 1;
+            $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
+                ->select('*')
+                ->where('users.class', '=', $request->class)
+                ->where('posts.status', '=', $status)
+                ->get();
 
+            return view('listview', compact('items', 'class','message'));
+        }
 
         //クラスだけの条件
         if ($request->class) {
+
             $message = "class";
             $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
                 ->select('*')
