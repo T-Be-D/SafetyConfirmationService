@@ -22,26 +22,18 @@ class ConfirmController extends Controller
     {
         $user = Auth::user();
 
-        $newPost = new Post;
-        $newPost->place = $request->place;
-        $newPost->studentID = $user->studentID;
+        $post = Post::where('studentID', $user->studentID)->first();
 
-        if ($request->textbox != null) {
-            $newPost->message = $request->textbox;
-        } else {
-            $newPost->message = 'ブランク';
+        if (!$post) {
+            $post = new Post;
+            $post->studentID = $user->studentID;
         }
 
-        if ($request->safe == 'on') {
-            $newPost->status = 1;
-        } else {
-            $newPost->status = 0;
-        }
+        $post->place = $request->place;
+        $post->message = $request->textbox ?? 'ブランク';
+        $post->status = $request->safe == 'on' ? 1 : 0;
+        $post->save();
 
-        $newPost->save();
-
-        // print_r($user->id);
-        //return view('confirm', ['user' => $user]);
         return redirect('listview');
     }
 }
