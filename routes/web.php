@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\ProfileController;
+
 use App\Http\Controllers\ListviewController;
+
+use App\Http\Controllers\LogoutController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('register');
+    return redirect('login');
 });
 
 Route::get('/dashboard', function () {

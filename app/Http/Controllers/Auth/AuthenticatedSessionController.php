@@ -25,12 +25,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $credentials = $request->only('studentID', 'password');
 
-        $request->session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        //return redirect()->intended(RouteServiceProvider::HOME);
-        return redirect('/confirm');
+            //return redirect()->intended(RouteServiceProvider::HOME);
+
+            return redirect()->intended('confirm');
+        }
+
+        return back()->withErrors([
+            'student_id' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     /**

@@ -42,44 +42,39 @@ if ($message) {
 
 <body>
 
-    <div class="flex flex-col  items-center  h-screen">
-        <h1 class="text-4xl m-5">Listview</h1>
+    <div class="flex flex-col  items-center  h-screen bg-gray-100 shadow">
+        <h1 class="text-4xl m-5 font-bold underline text-shadow-2xl">災害掲示板</h1>
 
         {{-- search bar --}}
-        <div class="my-5 flex">
-            <form action="search" method="GET">
-                <input type="text" class="seachWord" placeholder="search id or name..." name="nameID" />
-                <select name="class" id="class">
-                    <option value="">class</option>
-                    @foreach ($classes as $cl)
-                        <option value="{{ $cl }}">
-                            {{ $cl }}
-                        </option>
-                    @endforeach
-                </select>
-                <input type="hidden" name="status" value="0">
-                <input type="checkbox" name="status" value="1">安否
-                <button id="" type="submit"
-                    class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
-                    onclick="search()">
-                    SEARCH
-                </button>
+        <div class="my-5">
+            {{-- <form class="form"> --}}
+            <input id="searchWord" type="text" class="seachWord" placeholder="search id or name..." />
+            <button id=""
+                class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
+                onclick="search()">
+                SEARCH
+            </button>
+            <button id=""
+                class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
+                onclick="reload()">
+                RELOAD
+            </button>
+            <select name="" id="class">
+                <option value="">class</option>
+                @foreach ($classes as $class)
+                    <option value="{{ $class }}">
+                        {{ $class }}
+                    </option>
+                @endforeach
 
-            </form>
-            <form action="listview" >
-                <button type="submit"
-                    class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
-                    onclick="reload()">
-                    RELOAD
-                </button>
-            </form>
-
+            </select>
+            {{-- </form> --}}
         </div>
 
         <table class="w-3/4 table-auto border-2 border-gray-600 " id="table">
             <thead class="border-2 border-gray-600 bg-gray-300 ">
                 <tr id="th">
-                    <th class="text-xl">STUDENTID </th>
+                    <th class="text-xl">ID </th>
                     <th class="text-xl">クラス </th>
                     <th class="text-xl">名前 </th>
                     <th class="text-xl">場所</th>
@@ -91,20 +86,13 @@ if ($message) {
 
             @foreach ($items as $item)
                 <tr>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->studentID }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->class }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->name }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->place }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->message }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->telnum }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">
-                        @if($item->status == 1)
-                            &#9989;
-                        @else
-                            &#10060;
-                        @endif
-                    </td>
-
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['studentID'] }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['class'] }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['name'] }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $l['place'] }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['message'] }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['contact'] }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600"> @if ($l['status'] == 1) &#9989;@else&#10062;@endif</td>
                 </tr>
             @endforeach
         </table>
