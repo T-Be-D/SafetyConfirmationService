@@ -24,6 +24,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
+
     // public function store(LoginRequest $request): RedirectResponse
     // {
     //     $credentials = $request->only('studentID', 'password');
@@ -44,15 +45,17 @@ class AuthenticatedSessionController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('studentID', 'password');
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
+        Log::info('login function called id' . $request->student_id);
+
+        if (Auth::attempt(['studentID' => $request->student_id, 'password' => $request->password])) {
             // Authentication passed...
             $user = Auth::user();
-            Log::info('Current user: ' . $user->name);
-            return view('home', ['user' => $user]);
+            Log::info('Current user: ' . $user);
+            //return view('auth.login', ['user' => $user]);
+            return redirect()->intended('confirm');
         }
         return redirect()->back()->withInput($request->only('studentID', 'remember'))->withErrors([
-            'student_id' => 'These credentials do not match our records.',
+            'studentID' => 'These credentials do not match our records.',
         ]);
     }
     /**

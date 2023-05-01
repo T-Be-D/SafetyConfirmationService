@@ -5,7 +5,9 @@ use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\ListviewController;
 
-use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -40,5 +42,16 @@ Route::post('/makepost', [ConfirmController::class, 'makePost'])->name('makePost
 
 Route::get("/listview", [ListviewController::class, 'index'])->name('listview');
 Route::get("/search", [ListviewController::class, 'search'])->name('search');
+
+
+Route::get('register', [RegisteredUserController::class, 'create'])
+    ->name('register');
+
+Route::post('register', [RegisteredUserController::class, 'store']);
+
+Route::get('login', [AuthenticatedSessionController::class, 'create'])
+    ->name('login');
+
+Route::post('loginReq', [AuthenticatedSessionController::class, 'login'])->name('loginReq');
 
 require __DIR__ . '/auth.php';
