@@ -34,6 +34,8 @@ class ConfirmController extends Controller
 
         if ($request->safe == 'on') {
             $newPost->status = 1;
+        } else {
+            $newPost->status = 0;
         }
 
         $newPost->save();

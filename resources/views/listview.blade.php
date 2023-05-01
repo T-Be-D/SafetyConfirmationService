@@ -20,8 +20,8 @@ foreach ($class as $key => $value) {
 }
 // print_r($classes);
 $classes = array_unique($classes);
-$message = '';
-if ($message) {
+
+if (!empty($message)) {
     echo $message;
 }
 
@@ -55,8 +55,12 @@ if ($message) {
                         </option>
                     @endforeach
                 </select>
-                <input type="hidden" name="status" value="0">
-                <input type="checkbox" name="status" value="1">安否
+                <select name="status" >
+                    <option value="0">安否</option>
+                    <option value="1">危険</option>
+                    <option value="2">安全</option>
+                </select>
+
                 <button id="" type="submit"
                     class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 rounded"
                     onclick="search()">
@@ -106,6 +110,7 @@ if ($message) {
                 </tr>
             @endforeach
         </table>
+
     </div>
 
 
