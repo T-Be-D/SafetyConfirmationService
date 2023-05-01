@@ -56,7 +56,7 @@ if ($message) {
                     @endforeach
                 </select>
                 <input type="hidden" name="status" value="0">
-
+                <input type="checkbox" name="status" value="1">安否
                 <button id="" type="submit"
                     class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 rounded"
                     onclick="search()">
