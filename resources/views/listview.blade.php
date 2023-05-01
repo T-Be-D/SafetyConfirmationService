@@ -5,10 +5,6 @@ $lists = [['studentID' => '0001 ', 'name' => '田中太郎', 'class' => 'SK2A', 
 $classes = array_unique(array_column($lists, 'class'));
 //ok &#9989;;
 //ng &#10060;
-
-$user = Auth::user();
-$id = Auth::id();
-print_r($id);
 ?>
 
 <!DOCTYPE html>
@@ -24,42 +20,46 @@ print_r($id);
 
 <body>
 
-    <div class="flex flex-col  items-center  h-screen">
-        <h1 class="text-4xl m-5">Listview</h1>
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit">Logout</button>
-        </form>
+    <div class="flex flex-col  items-center  h-screen bg-gray-100 shadow">
+        <h1 class="text-4xl m-5 font-bold underline text-shadow-2xl">災害掲示板</h1>
 
         {{-- search bar --}}
         <div class="my-5">
             {{-- <form class="form"> --}}
-            <input id="searchWord" type="text" class="seachWord" placeholder="search id or name..." />
-            <button id=""
-                class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
-                onclick="search()">
-                SEARCH
-            </button>
-            <button id=""
-                class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
-                onclick="reload()">
-                RELOAD
-            </button>
-            <select name="" id="class">
-                <option value="">class</option>
-                @foreach ($classes as $class)
-                    <option value="{{ $class }}">
-                        {{ $class }}
-                    </option>
-                @endforeach
+                <div>
+                    <input id="searchWord" type="text" class="seachWord rounded" placeholder="search id or name..." />
 
-            </select>
+
+                    <select name="" id="class" class="rounded">
+                        <option value="">class</option>
+                        @foreach ($classes as $class)
+                            <option value="{{ $class }}">
+                                {{ $class }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    <button id=""
+                        class="clear-results bg-black hover:bg-black  text-white font-bold py-2 px-4 rounded"
+                        onclick="search()">
+                        SEARCH
+                    </button>
+
+                    <button id=""
+                        class="clear-results bg-black hover:bg-black  text-white font-bold py-2 px-4 rounded"
+                        onclick="reload()">
+                        RELOAD
+                    </button>
+                </div>
+
+
+
             {{-- </form> --}}
         </div>
 
-        <table class="w-3/4 table-auto border-2 border-gray-600 " id="table">
-            <thead class="border-2 border-gray-600 bg-gray-300 ">
-                <tr id="th">
+        <table class="w-3/4 table-auto border-2 border-black bg-white" id="table">
+            <thead class="border-2 border-black bg-black ">
+                <tr id="th" class="text-white">
                     <th class="text-xl">ID </th>
                     <th class="text-xl">クラス </th>
                     <th class="text-xl">名前 </th>
@@ -78,11 +78,7 @@ print_r($id);
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $l['place'] }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['message'] }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $l['contact'] }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">
-                        @if ($l['status'] == 1)
-                        &#9989;@else&#10062;
-                        @endif
-                    </td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600"> @if ($l['status'] == 1) &#9989;@else &#10060;@endif</td>
                 </tr>
             @endforeach
         </table>
