@@ -17,9 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login', [
-            'errorMessage' => session('errorMessage'),
-        ]);
+        return view('auth.login');
     }
 
     /**
@@ -27,14 +25,14 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $credentials = $request->only('student_id', 'password');
+        $credentials = $request->only('studentID', 'password');
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             //return redirect()->intended(RouteServiceProvider::HOME);
 
-            return redirect('confirm');
+            return redirect()->intended('confirm');
         }
 
         return back()->withErrors([
