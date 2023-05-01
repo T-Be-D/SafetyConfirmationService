@@ -24,7 +24,8 @@ class ListviewController extends Controller
     public function search(Request $request)
     {
         $class =  User::select('class')->get();
-
+        $message = "none";
+        //IDか名前の条件
         if ($request->nameID) {
             $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
                 ->select('*')
@@ -32,21 +33,48 @@ class ListviewController extends Controller
                 ->orwhere('users.name', '=', $request->nameID)
                 ->get();
 
-            return view('listview', compact('items', 'class'));
+            return view('listview', compact('items', 'class','message'));
         }
-        if ($request->class) {
+
+        //クラスとステータスの条件
+        if($request->class && $request->status)
+        {
+            $message = "double";
+            $status = $request->status - 1;
             $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
                 ->select('*')
                 ->where('users.class', '=', $request->class)
-                ->where('posts.status', '=', $request->status)
+                ->where('posts.status', '=', $status)
                 ->get();
-            return view('listview', compact('items', 'class'));
-        }
-        $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
-            ->select('*')
-            ->where('posts.status', '=', $request->status)
-            ->get();
 
-        return view('listview', compact('items', 'class'));
+            return view('listview', compact('items', 'class','message'));
+        }
+
+        //クラスだけの条件
+        if ($request->class) {
+
+            $message = "class";
+            $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
+                ->select('*')
+                ->where('users.class', '=', $request->class)
+                ->get();
+            return view('listview', compact('items', 'class','message'));
+        }
+
+        //ステータスだけの条件
+        if($request->status){
+            $status = $request->status - 1;
+            $message = 'status' . $status;
+            $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
+                ->select('*')
+                ->where('posts.status', '=', $status)
+                ->get();
+            return view('listview', compact('items', 'class','message'));
+        }
+        //何もなし
+        $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
+            ->select('*')->get();
+
+        return view('listview', compact('items', 'class','message'));
     }
 }
