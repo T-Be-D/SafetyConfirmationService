@@ -6,9 +6,9 @@
         @csrf
         <!-- StudentID 項目追加のみ-->
         <div>
-            <x-input-label for="student_id" :value="__('Student_ID')" />
+            <x-input-label for="student_id" :value="__('student_id')" />
             <x-text-input id="student_id" class="block mt-1 w-full" type="number" name="student_id" placeholder="2220000"
-                :value="old('student_id')" required autofocus autocomplete="user_id" />
+                :value="old('student_id')" required autofocus autocomplete="student_id" />
             <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
         </div>
 

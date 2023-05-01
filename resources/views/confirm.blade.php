@@ -31,9 +31,9 @@
                 <select name="place" id=""
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-lg font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 mr-2">
                     <option value="default"></option>
-                    <option value="company">学内</option>
-                    <option value="home">在宅</option>
-                    <option value="etc">その他</option>
+                    <option value="学内">学内</option>
+                    <option value="在宅">在宅</option>
+                    <option value="その他">その他</option>
                 </select>
                 <label for="safe" class="text-2xl font-semibold mr-2">安全</label>
                 <input type="checkbox" name="safe"
