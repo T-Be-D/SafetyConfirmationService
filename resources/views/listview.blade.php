@@ -6,8 +6,6 @@
 // //ok &#9989;;
 // //ng &#10060;
 
-
-
 $item = [];
 $int = 0;
 foreach ($items as $i) {
@@ -15,10 +13,10 @@ foreach ($items as $i) {
 }
 
 //クラスの重複対策
-$classes = array();
+$classes = [];
 $i = 0;
 foreach ($class as $key => $value) {
-    $classes[$i++] = $value["class"];
+    $classes[$i++] = $value['class'];
 }
 // print_r($classes);
 $classes = array_unique($classes);
@@ -66,7 +64,7 @@ if ($message) {
                 </button>
 
             </form>
-            <form action="listview" >
+            <form action="listview">
                 <button type="submit"
                     class="clear-results bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
                     onclick="reload()">
@@ -98,7 +96,7 @@ if ($message) {
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->message }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->telnum }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">
-                        @if($item->status == 1)
+                        @if ($item->status == 1)
                             &#9989;
                         @else
                             &#10060;
@@ -112,4 +110,5 @@ if ($message) {
 
 
 </body>
+
 </html>
