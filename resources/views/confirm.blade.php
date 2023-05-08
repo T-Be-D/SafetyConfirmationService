@@ -22,14 +22,15 @@
                 <p class="px-5 text-2xl font-semibold">ID : {{ $user->studentID }}</p>
             </div>
             <div class="flex">
-                <h2 class=" px-5 text-2xl font-semibold">名前  : {{ $user->name }}</h2>
+                <h2 class=" px-5 text-2xl font-semibold">名前 : {{ $user->name }}</h2>
             </div>
 
             <div class="my-1 px-5">
                 <label for="place" class="text-2xl font-semibold mr-2">現在地</label>
                 <select name="place" id=""
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-lg font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 mr-2">
-                    <option value="default"></option>
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-lg font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 mr-2"
+                    required>
+                    <option value=""selected hidden>未設定</option>
                     <option value="学内">学内</option>
                     <option value="在宅">在宅</option>
                     <option value="その他">その他</option>
