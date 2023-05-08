@@ -18,9 +18,9 @@ foreach ($class as $key => $value) {
 // print_r($classes);
 $classes = array_unique($classes);
 
-if (!empty($message)) {
-    echo $message;
-}
+// if (!empty($message)) {
+//     echo $message;
+// }
 
 ?>
 
@@ -40,12 +40,10 @@ if (!empty($message)) {
     <div class="flex flex-col  items-center  h-screen bg-gray-100 shadow">
         <div
             class=" flex  w-full justify-end space-x-2 bg-black text-white border-b-2  border-white text-xl py-2 px-4 gap-2">
-            @if ($user)
-                <div class="py-1 font-bold border-b-2">ユーザー：{{ $user->name }}</div>
-            @endif
-            <div class="py-1 font-bold border-b-2">ユーザー：なし</div>
-            <div class="border border-white rounded py-1 px-4 "><a
-                    href={{ route('confirm', ['user' => $user]) }}>Edit</a>
+
+            <div class="py-1 font-bold border-b-2">ユーザー：{{ Auth::user()->name }}</div>
+
+            <div class="border border-white rounded py-1 px-4 "><a href={{ route('confirm') }}>Edit</a>
             </div>
             <div class="border border-white rounded py-1 px-2 ">
                 <form action="{{ route('logout') }}" method="POST">

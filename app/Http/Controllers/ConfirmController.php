@@ -14,6 +14,7 @@ class ConfirmController extends Controller
     public function index()
     {
         $user = Auth::user();
+
         return view('confirm', ['user' => $user]);
     }
 

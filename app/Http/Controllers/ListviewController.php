@@ -25,6 +25,8 @@ class ListviewController extends Controller
 
     public function search(Request $request)
     {
+        // Get the currently authenticated user...
+        $user = Auth::user();
         $class =  User::select('class')->get();
         $message = "none";
         //IDか名前の条件
@@ -76,6 +78,6 @@ class ListviewController extends Controller
         $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
             ->select('*')->get();
 
-        return view('listview', compact('items', 'class', 'message',));
+        return view('listview', compact('items', 'class', 'message', 'user'));
     }
 }
