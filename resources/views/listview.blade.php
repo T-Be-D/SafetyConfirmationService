@@ -1,8 +1,5 @@
 <?php
 // //status 0 × 1 〇
-// $lists = [['studentID' => '0001 ', 'name' => '田中太郎', 'class' => 'SK2A', 'place' => '社内', 'status' => '1', 'message' => 'This is a message', 'contact' => '0000000'], ['studentID' => '0002 ', 'name' => '山田次郎', 'class' => 'SK2A', 'place' => '社内', 'status' => '0', 'message' => 'This is a message2', 'contact' => '11111111'], ['studentID' => '0003 ', 'name' => '森花子', 'class' => 'IE2A', 'place' => '社内', 'status' => '1', 'message' => 'This is a message3', 'contact' => '22222222'], ['studentID' => '0004 ', 'name' => '鈴木隼人', 'class' => 'IE2A', 'place' => '社内', 'status' => '0', 'message' => 'This is a message', 'contact' => '4444444']];
-// //クラスの重複
-
 // //ok &#9989;;
 // //ng &#10060;
 
@@ -41,6 +38,23 @@ if (!empty($message)) {
 <body>
 
     <div class="flex flex-col  items-center  h-screen bg-gray-100 shadow">
+        <div
+            class=" flex  w-full justify-end space-x-2 bg-black text-white border-b-2  border-white text-xl py-2 px-4 gap-2">
+            @if ($user)
+                <div class="py-1 font-bold border-b-2">ユーザー：{{ $user->name }}</div>
+            @endif
+            <div class="py-1 font-bold border-b-2">ユーザー：なし</div>
+            <div class="border border-white rounded py-1 px-4 "><a
+                    href={{ route('confirm', ['user' => $user]) }}>Edit</a>
+            </div>
+            <div class="border border-white rounded py-1 px-2 ">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+
+        </div>
         <h1 class="text-4xl m-5 font-bold underline text-shadow-2xl">災害掲示板</h1>
 
         {{-- search bar --}}
@@ -55,7 +69,7 @@ if (!empty($message)) {
                         </option>
                     @endforeach
                 </select>
-                <select name="status" >
+                <select name="status">
                     <option value="0">安否</option>
                     <option value="1">危険</option>
                     <option value="2">安全</option>
