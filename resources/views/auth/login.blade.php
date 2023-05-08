@@ -22,7 +22,7 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Remember Me -->
+        {{-- <!-- Remember Me -->
         <div class="block mt-2">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox"
@@ -30,11 +30,11 @@
                     name="remember">
                 <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
             </label>
-        </div>
+        </div> --}}
 
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center text-center">
 
-            <x-primary-button class="w-1/5">
+            <x-primary-button class="w-1/5 mt-3">
                 {{ __('Login') }}
             </x-primary-button>
 
