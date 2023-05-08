@@ -40,7 +40,7 @@ Route::get('/confirm', [ConfirmController::class, 'index'])->name('confirm');
 
 Route::post('/makepost', [ConfirmController::class, 'makePost'])->name('makePost');
 
-Route::get("/listview", [ListviewController::class, 'index'])->name('listview');
+Route::get("/listview", [ListviewController::class, 'index'])->middleware('auth')->name('listview');
 Route::get("/search", [ListviewController::class, 'search'])->name('search');
 
 
