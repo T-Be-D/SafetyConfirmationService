@@ -40,9 +40,10 @@
                     class="w-7 h-7 text-blue-600 bg-gray-50 border-gray-300 rounded focus:ring-blue-500">
             </div>
             <label for="textbox" class="text-xl font-bold mt-5 mb-2">メッセージ</label>
-            <textarea id="textbox" name="textbox" rows="4" cols="35" maxlength="50"
+            <textarea id="textbox" name="textbox" rows="4" cols="35"
                 class="w-full px-0 mb-2 text-gray-900 bg-white border focus:ring-blue-500 rounded-lg">
             </textarea>
+            <x-input-error :messages="$errors->get('textbox')" class="mt-2" />
             <button type="submit"
                 class="bg-black hover:bg-black-700 text-white font-bold text-xl py-2 px-4 rounded h-10 w-28 mx-auto mt-2 hover:shadow-sm hover:translate-y-0.5 transform transition">更新</button>
         </form>

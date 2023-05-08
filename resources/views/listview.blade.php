@@ -84,7 +84,7 @@ $classes = array_unique($classes);
                 <button type="submit"
                     class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 ml-1 rounded hover:shadow-sm hover:translate-y-0.5 transform transition"
                     onclick="reload()">
-                    RELOAD
+                    CLEAR
                 </button>
             </form>
 

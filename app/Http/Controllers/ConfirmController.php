@@ -29,8 +29,15 @@ class ConfirmController extends Controller
             $post->studentID = $user->studentID;
         }
 
+
+        $validatedData = $request->validate([
+            'textbox' => 'nullable|max:50',
+        ], [
+            'textbox.max' => 'メッセージ フィールドは 50 文字を超えることはできません。',
+        ]);
+
         $post->place = $request->place;
-        $post->message = $request->textbox ?? 'ブランク';
+        $post->message = $request->textbox ?? '未入力';
         $post->status = $request->safe == 'on' ? 1 : 0;
         $post->save();
 
