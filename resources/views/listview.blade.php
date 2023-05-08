@@ -104,13 +104,23 @@ $classes = array_unique($classes);
             </thead>
 
             @foreach ($items as $item)
+                <?php
+                if (strlen($item->telnum) == 10) {
+                    $formatted_number = substr($item->telnum, 0, 3) . '-' . substr($item->telnum, 3, 4) . '-' . substr($item->telnum, 7, 3);
+                } elseif (strlen($item->telnum) == 11) {
+                    $formatted_number = substr($item->telnum, 0, 3) . '-' . substr($item->telnum, 3, 4) . '-' . substr($item->telnum, 7, 4);
+                } else {
+                    // handle invalid input
+                }
+                ?>
                 <tr>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->studentID }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->class }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->name }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->place }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->message }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->telnum }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $formatted_number }}
+                    </td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">
                         @if ($item->status == 1)
                             &#9989;

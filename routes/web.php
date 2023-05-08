@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/confirm', [ConfirmController::class, 'index'])->name('confirm');
+Route::get('/confirm', [ConfirmController::class, 'index'])->middleware('auth')->name('confirm');
 
 Route::post('/makepost', [ConfirmController::class, 'makePost'])->name('makePost');
 
