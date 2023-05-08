@@ -54,7 +54,8 @@ class AuthenticatedSessionController extends Controller
             //return view('auth.login', ['user' => $user]);
             return redirect()->intended('confirm');
         }
-        return redirect()->back()->withInput($request->only('studentID', 'remember'))->withErrors([
+
+        return redirect()->back()->withInput($request->only('studentID',))->withErrors([
             'studentID' => 'These credentials do not match our records.',
         ]);
     }
