@@ -67,14 +67,14 @@ $classes = array_unique($classes);
                         </option>
                     @endforeach
                 </select>
-                <select name="status">
+                <select name="status" class="rounded">
                     <option value=""selected hidden>安否</option>
                     <option value="1">危険</option>
                     <option value="2">安全</option>
                 </select>
 
                 <button id="" type="submit"
-                    class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 rounded"
+                    class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 rounded hover:shadow-sm hover:translate-y-0.5 transform transition"
                     onclick="search()">
                     SEARCH
                 </button>
@@ -82,7 +82,7 @@ $classes = array_unique($classes);
             </form>
             <form action="listview">
                 <button type="submit"
-                    class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 ml-1 rounded"
+                    class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 ml-1 rounded hover:shadow-sm hover:translate-y-0.5 transform transition"
                     onclick="reload()">
                     RELOAD
                 </button>

@@ -44,7 +44,7 @@
                 class="w-full px-0 mb-2 text-gray-900 bg-white border focus:ring-blue-500 rounded-lg">
             </textarea>
             <button type="submit"
-                class="bg-black hover:bg-black-700 text-white font-bold text-xl py-2 px-4 rounded h-10 w-28 mx-auto mt-2">更新</button>
+                class="bg-black hover:bg-black-700 text-white font-bold text-xl py-2 px-4 rounded h-10 w-28 mx-auto mt-2 hover:shadow-sm hover:translate-y-0.5 transform transition">更新</button>
         </form>
 
     </div>
