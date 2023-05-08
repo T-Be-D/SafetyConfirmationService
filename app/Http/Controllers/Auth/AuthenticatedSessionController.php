@@ -55,8 +55,9 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended('confirm');
         }
 
-        return redirect()->back()->withInput($request->only('studentID',))->withErrors([
-            'studentID' => 'These credentials do not match our records.',
+        return redirect()->back()->withInput($request->only('studentID', 'password'))->withErrors([
+            'studentID' => '学籍番号は正しくありません。',
+            'password' => 'パスワードは正しくありません。'
         ]);
     }
     /**

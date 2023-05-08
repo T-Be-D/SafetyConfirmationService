@@ -40,7 +40,7 @@
                     class="w-7 h-7 text-blue-600 bg-gray-50 border-gray-300 rounded focus:ring-blue-500">
             </div>
             <label for="textbox" class="text-xl font-bold mt-5 mb-2">メッセージ</label>
-            <textarea id="textbox" name="textbox" rows="4" cols="35"
+            <textarea id="textbox" name="textbox" rows="4" cols="35" maxlength="50"
                 class="w-full px-0 mb-2 text-gray-900 bg-white border focus:ring-blue-500 rounded-lg">
             </textarea>
             <button type="submit"
