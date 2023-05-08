@@ -26,31 +26,21 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $random_id = '222' . str_pad(rand(0, 99999), 4, '0', STR_PAD_LEFT);
+        $random_id = '222' . str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
         $random_number = '0' . str_pad(rand(0, 9999999999), 10, '0', STR_PAD_LEFT);
         $classes = ['SK1A', 'SK2A', 'SK3A', 'SE1A', 'SE2A', 'IE1A', 'IE2A', 'IE3A', 'IE4A'];
         $faker = Faker::create();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             User::create([
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => Hash::make('password'),
-                'status' => random_int(0, 1),
-                'studentID' =>  $random_id,
+                'studentID' =>  '222' . str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT),
                 'telnum' => $random_number,
                 'class' => $classes[array_rand($classes)]
 
             ]);
         }
-
-        $places = ['学内', '在宅', 'その他'];
-        Post::create([
-            'studentID' => DB::table('users')->inRandomOrder()->value('studentID'),
-            'place' => 'place',
-            'status' => $places[array_rand($places)],
-            'message' => '未入力',
-
-        ]);
     }
 }

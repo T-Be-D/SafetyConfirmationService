@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('status')->default(0);
-            $table->string('profession')->nullable();
+            // $table->integer('status')->default(0);
+            //$table->string('profession')->nullable();
             $table->string('telnum')->nullable();
             $table->string('class')->nullable();
             $table->integer('studentID')->primary();

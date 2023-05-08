@@ -29,7 +29,6 @@ class ConfirmController extends Controller
             $post->studentID = $user->studentID;
         }
 
-
         $validatedData = $request->validate([
             'textbox' => 'nullable|max:50',
         ], [
