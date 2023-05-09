@@ -38,7 +38,8 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'studentID' =>  '222' . str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT),
                 'telnum' => $random_number,
-                'class' => $classes[array_rand($classes)]
+                'class' => $classes[array_rand($classes)],
+                'status' => 0
 
             ]);
         }

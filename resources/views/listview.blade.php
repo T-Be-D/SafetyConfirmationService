@@ -105,6 +105,7 @@ $classes = array_unique($classes);
 
             @foreach ($items as $item)
                 <?php
+                //電話番号
                 if (strlen($item->telnum) == 10) {
                     $formatted_number = substr($item->telnum, 0, 3) . '-' . substr($item->telnum, 3, 4) . '-' . substr($item->telnum, 7, 3);
                 } elseif (strlen($item->telnum) == 11) {

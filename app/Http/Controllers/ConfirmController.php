@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\User;
 
 
 
@@ -37,7 +38,9 @@ class ConfirmController extends Controller
 
         $post->place = $request->place;
         $post->message = $request->textbox ?? '未入力';
-        $post->status = $request->safe == 'on' ? 1 : 0;
+        $current_user = User::find($user->studentID);
+        $current_user->status = $request->safe == 'on' ? 1 : 0;
+        $current_user->save();
         $post->save();
 
         return redirect('listview');

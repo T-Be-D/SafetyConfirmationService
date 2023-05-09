@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('class')->nullable();
             $table->integer('studentID')->primary();
             $table->unique('studentID');
+            $table->integer('status')->nullable();
         });
     }
 

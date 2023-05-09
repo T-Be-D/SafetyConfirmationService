@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('place')->nullable();
-            $table->integer('status')->nullable();
+            //$table->integer('status')->nullable();
             $table->string('message')->nullable();
 
             //外部キー
             $table->unsignedBigInteger('studentID')->unique(); // add a new unsigned big integer column
             $table->foreign('studentID')->references('studentID')->on('users'); //unique
-            $table->unique('studentID');
+
         });
     }
 
