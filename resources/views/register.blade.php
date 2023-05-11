@@ -7,7 +7,7 @@
             <div>
                 <x-input-label for="student_id" :value="__('Student_ID')" />
                 <x-text-input id="student_id" class="block mt-1 w-50" type="number" name="student_id" :value="old('student_id')"
-                    required autofocus autocomplete="student_id" />
+                    autofocus autocomplete="student_id" />
                 <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
             </div>
 
@@ -29,8 +29,8 @@
                     <label for="sk" style="font-size: 16px; color: rgb(11, 10, 10)">教員</label>
 
                 </div>
-                <select id="class" name="class" class="block mt-1 w-50 rounded " required autofocus
-                    autocomplete="class" style="background-color: white;" required>
+                <select id="class" name="class" class="block mt-1 w-50 rounded " autofocus autocomplete="class"
+                    style="background-color: white;">
                     {{-- 教員 --}}
                     <option value="校長">校長</option>
                     <option value="教頭">教頭</option>
@@ -110,7 +110,7 @@
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" placeholder="田中 太郎"
-                :value="old('name')" required autofocus autocomplete="name" />
+                :value="old('name')" autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
@@ -120,7 +120,7 @@
             <div class="mt-4">
                 <x-input-label for="email" :value="__('Email')" />
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                    placeholder="ecc123@ecc.ac.jp" :value="old('email')" required autocomplete="email" />
+                    placeholder="ecc123@ecc.ac.jp" :value="old('email')" autocomplete="email" />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
@@ -128,7 +128,7 @@
             <div class="mt-4">
                 <x-input-label for="contact" :value="__('Contact')" />
                 <x-text-input id="contact" class="block mt-1 w-full" type="number" name="contact"
-                    placeholder="06-6374-0144" :value="old('contact')" required autofocus autocomplete="contact" />
+                    placeholder="06-6374-0144" :value="old('contact')" autofocus autocomplete="contact" />
                 <x-input-error :messages="$errors->get('contact')" class="mt-2" />
             </div>
 
@@ -139,7 +139,7 @@
             <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input id="password" class="block mt-1 w-full" type="password" name="password"
-                placeholder="半角英数字8文字以上" required autocomplete="new-password" />
+                placeholder="半角英数字8文字以上" autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -149,7 +149,7 @@
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                name="password_confirmation" required autocomplete="new-password" />
+                name="password_confirmation" autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>

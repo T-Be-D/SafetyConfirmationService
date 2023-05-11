@@ -37,7 +37,7 @@ $classes = array_unique($classes);
 
 <body>
 
-    <div class="flex flex-col  items-center  h-screen bg-gray-100 shadow">
+    <div class="flex flex-col  items-center  h-screen bg-gray-100  shadow">
         <div
             class=" flex  w-full justify-end space-x-2 bg-black text-white border-b-2  border-white dark: text-xl py-2 px-4 gap-2">
 
