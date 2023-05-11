@@ -16,7 +16,7 @@ class ListviewController extends Controller
         $user = Auth::user();
         //print_r($user);
         $items = Post::rightJoin('users', 'users.studentID', '=', 'posts.studentID')
-            ->select('*')->get();
+            ->select('*')->orderBy('users.studentID', 'desc')->get();
 
         $class =  User::select('class')->get();
 

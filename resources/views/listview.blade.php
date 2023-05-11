@@ -39,7 +39,7 @@ $classes = array_unique($classes);
 
     <div class="flex flex-col  items-center  h-screen bg-gray-100 shadow">
         <div
-            class=" flex  w-full justify-end space-x-2 bg-black text-white border-b-2  border-white text-xl py-2 px-4 gap-2">
+            class=" flex  w-full justify-end space-x-2 bg-black text-white border-b-2  border-white dark: text-xl py-2 px-4 gap-2">
 
             <div class="py-1 font-bold border-b-2">ユーザー：{{ Auth::user()->name }}</div>
 
@@ -106,13 +106,9 @@ $classes = array_unique($classes);
             @foreach ($items as $item)
                 <?php
                 //電話番号
-                if (strlen($item->telnum) == 10) {
-                    $formatted_number = substr($item->telnum, 0, 3) . '-' . substr($item->telnum, 3, 4) . '-' . substr($item->telnum, 7, 3);
-                } elseif (strlen($item->telnum) == 11) {
-                    $formatted_number = substr($item->telnum, 0, 3) . '-' . substr($item->telnum, 3, 4) . '-' . substr($item->telnum, 7, 4);
-                } else {
-                    // handle invalid input
-                }
+                
+                $formatted_number = substr($item->telnum, 0, 3) . '-' . substr($item->telnum, 3, 4) . '-' . substr($item->telnum, 7);
+                
                 ?>
                 <tr>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->studentID }}</td>

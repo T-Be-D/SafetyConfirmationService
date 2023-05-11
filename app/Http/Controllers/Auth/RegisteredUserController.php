@@ -34,6 +34,12 @@ class RegisteredUserController extends Controller
             'student_id' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'contact' => ['min:10', 'max:11', 'integer']
+        ], [
+            'student_id.required' => '学籍番号を入力してください。',
+            'email' => 'メールアドレスを入力してください。',
+            'password.required' => 'パスワードを入力してください。',
+            'contact' => 'phone number is invalid'
         ]);
 
         $user = User::create([
