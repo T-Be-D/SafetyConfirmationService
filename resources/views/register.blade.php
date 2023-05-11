@@ -63,6 +63,14 @@
                         {
                             value: 'IE3B',
                             label: 'IE3B'
+                        },
+                        {
+                            value: 'IE4A',
+                            label: 'IE4A'
+                        },
+                        {
+                            value: 'IE4B',
+                            label: 'IE4B'
                         }
                     ],
                     SK: [{
@@ -132,10 +140,6 @@
                 // Initialize the class options
                 updateClassOptions();
             </script>
-
-
-
-
         </div>
 
 
