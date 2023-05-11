@@ -11,8 +11,8 @@
 ![Laravel](https://img.shields.io/badge/Laravel-v8.0-orange)
 ![MySQL](https://img.shields.io/badge/MySQL-v8.0-blue)
 ![Git](https://img.shields.io/badge/Git-v2.33.0-red)
-![GitHub](https://img.shields.io/badge/GitHub--black?logo=GitHub)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3.0.5-blueviolet)
+![GitHub](https://img.shields.io/badge/GitHub--black?logo=GitHub)
 
 ## インストール
 
