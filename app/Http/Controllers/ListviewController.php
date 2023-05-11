@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Ramsey\Uuid\Type\Integer;
@@ -14,7 +15,7 @@ class ListviewController extends Controller
         // Get the currently authenticated user...
         $user = Auth::user();
         //print_r($user);
-        $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
+        $items = Post::rightJoin('users', 'users.studentID', '=', 'posts.studentID')
             ->select('*')->get();
 
         $class =  User::select('class')->get();
@@ -31,7 +32,7 @@ class ListviewController extends Controller
         $message = "none";
         //IDか名前の条件
         if ($request->nameID) {
-            $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
+            $items = Post::RightJoin('users', 'users.studentID', '=', 'posts.studentID')
                 ->select('*')
                 ->where('users.studentID', '=', (int)$request->nameID)
                 ->orwhere('users.name', '=', $request->nameID)
@@ -44,10 +45,10 @@ class ListviewController extends Controller
         if ($request->class && $request->status) {
             $message = "double";
             $status = $request->status - 1;
-            $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
+            $items = Post::rightJoin('users', 'users.studentID', '=', 'posts.studentID')
                 ->select('*')
                 ->where('users.class', '=', $request->class)
-                ->where('posts.status', '=', $status)
+                ->where('users.status', '=', $status)
                 ->get();
 
             return view('listview', compact('items', 'class', 'message'));
@@ -57,7 +58,7 @@ class ListviewController extends Controller
         if ($request->class) {
 
             $message = "class";
-            $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
+            $items = Post::rightJoin('users', 'users.studentID', '=', 'posts.studentID')
                 ->select('*')
                 ->where('users.class', '=', $request->class)
                 ->get();
@@ -68,14 +69,14 @@ class ListviewController extends Controller
         if ($request->status) {
             $status = $request->status - 1;
             $message = 'status' . $status;
-            $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
+            $items = Post::rightJoin('users', 'users.studentID', '=', 'posts.studentID')
                 ->select('*')
-                ->where('posts.status', '=', $status)
+                ->where('users.status', '=', $status)
                 ->get();
             return view('listview', compact('items', 'class', 'message'));
         }
         //何もなし
-        $items = User::Join('posts', 'users.studentID', '=', 'posts.studentID')
+        $items = Post::rightJoin('users', 'users.studentID', '=', 'posts.studentID')
             ->select('*')->get();
 
         return view('listview', compact('items', 'class', 'message', 'user'));
