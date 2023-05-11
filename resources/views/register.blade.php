@@ -21,13 +21,17 @@
             <div>
                 <x-input-label for="class" :value="__('Class')" />
                 <div class="mt-1">
-                    <input type="radio" id="ie" name="class_type" value="IE" checked>
-                    <label for="ie" style="font-size: 16px; color: rgb(11, 10, 10)">IE</label>
-                    <input type="radio" id="sk" name="class_type" value="SK">
-                    <label for="sk" style="font-size: 16px; color:rgb(11, 10, 10)">SK</label>
-                    <input type="radio" id="teacher" name="class_type" value="teacher">
-                    <label for="sk" style="font-size: 16px; color: rgb(11, 10, 10)">教員</label>
-
+                    <div style="display: flex;">
+                        <select id="class_type" name="class_type" class="block mt-1 w-50 rounded" required autofocus
+                            autocomplete="class_type" style="background-color: white;">
+                            <option value="IE">IE</option>
+                            <option value="SK">SK</option>
+                            <option value="teacher">教員</option>
+                        </select>
+                        <select id="class" name="class" class="block mt-1 w-50 rounded" required autofocus
+                            autocomplete="class" style="background-color: white;">
+                        </select>
+                    </div>
                 </div>
                 <select id="class" name="class" class="block mt-1 w-50 rounded " autofocus autocomplete="class"
                     style="background-color: white;">
@@ -55,51 +59,104 @@
                 </select>
                 <x-input-error :messages="$errors->get('class')" class="mt-2" />
             </div>
-
             <script>
-                // ラジオボタンの選択状態に応じてselectの中身を変更する関数
+                const classTypeSelect = document.getElementById('class_type');
+                const classSelect = document.getElementById('class');
+
+                const classOptions = {
+                    IE: [{
+                            value: 'IE1A',
+                            label: 'IE1A'
+                        },
+                        {
+                            value: 'IE1B',
+                            label: 'IE1B'
+                        },
+                        {
+                            value: 'IE2A',
+                            label: 'IE2A'
+                        },
+                        {
+                            value: 'IE2B',
+                            label: 'IE2B'
+                        },
+                        {
+                            value: 'IE3A',
+                            label: 'IE3A'
+                        },
+                        {
+                            value: 'IE3B',
+                            label: 'IE3B'
+                        }
+                    ],
+                    SK: [{
+                            value: 'SK1A',
+                            label: 'SK1A'
+                        },
+                        {
+                            value: 'SK1B',
+                            label: 'SK1B'
+                        },
+                        {
+                            value: 'SK2A',
+                            label: 'SK2A'
+                        },
+                        {
+                            value: 'SK2B',
+                            label: 'SK2B'
+                        },
+                        {
+                            value: 'SK3A',
+                            label: 'SK3A'
+                        },
+                        {
+                            value: 'SK3B',
+                            label: 'SK3B'
+                        }
+                    ],
+                    teacher: [{
+                            value: '校長',
+                            label: '校長'
+                        },
+                        {
+                            value: '教頭',
+                            label: '教頭'
+                        },
+                        {
+                            value: '教員',
+                            label: '教員'
+                        }
+                    ]
+                };
+
+                // Update the options in the class select element
                 function updateClassOptions() {
-                    const classType = document.querySelector('input[name="class_type"]:checked').value;
-                    const classSelect = document.getElementById('class');
-                    if (classType === 'IE') {
-                        classSelect.innerHTML = `
-                <option value=""selected hidden>選択</option>
-                <option value="IE1A">IE1A</option>
-                <option value="IE1A">IE1B</option>
-                <option value="IE2A">IE2A</option>
-                <option value="IE2B">IE2B</option>
-                <option value="IE3A">IE3A</option>
-                <option value="IE3B">IE3B</option>
+                    const selectedClassType = classTypeSelect.value;
+                    const options = classOptions[selectedClassType];
 
-            `;
-                    } else if (classType === 'SK') {
-                        classSelect.innerHTML = `
-                <option value=""selected hidden>選択</option>
-                <option value="SK1A">SK1A</option>
-                <option value="SK1A">SK1B</option>
-                <option value="SK2A">SK2A</option>
-                <option value="SK2B">SK2B</option>
-                <option value="SK3A">SK3A</option>
-                <option value="SK3B">SK3B</option>
+                    // Clear current options
+                    classSelect.innerHTML = '';
 
-            `;
-                    } else if (classType === 'teacher') {
-                        classSelect.innerHTML = `
-                <option value=""selected hidden>選択</option>
-                <option value="校長">校長</option>
-                <option value="教頭">教頭</option>
-                <option value="教員">教員</option>
-            `;
-                    }
-
+                    // Add new options
+                    options.forEach(option => {
+                        const {
+                            value,
+                            label
+                        } = option;
+                        const optionElement = document.createElement('option');
+                        optionElement.value = value;
+                        optionElement.textContent = label;
+                        classSelect.appendChild(optionElement);
+                    });
                 }
-                // ラジオボタンの選択状態が変更された時にselectの中身を変更するように設定する
-                document.querySelectorAll('input[name="class_type"]').forEach(radio => {
-                    radio.addEventListener('change', updateClassOptions);
-                });
-                // 初期化時にもselectの中身を変更する
+
+                // Add event listener for class type select
+                classTypeSelect.addEventListener('change', updateClassOptions);
+
+                // Initialize the class options
                 updateClassOptions();
             </script>
+
 
 
 
