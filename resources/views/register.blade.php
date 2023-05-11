@@ -20,43 +20,21 @@
             </div> --}}
             <div>
                 <x-input-label for="class" :value="__('Class')" />
-                <div class="mt-1">
-                    <div style="display: flex;">
-                        <select id="class_type" name="class_type" class="block mt-1 w-50 rounded" required autofocus
-                            autocomplete="class_type" style="background-color: white;">
-                            <option value="IE">IE</option>
-                            <option value="SK">SK</option>
-                            <option value="teacher">教員</option>
-                        </select>
-                        <select id="class" name="class" class="block mt-1 w-50 rounded" required autofocus
-                            autocomplete="class" style="background-color: white;">
-                        </select>
-                    </div>
+                <div class="flex gap-2">
+                    <select id="class_type" name="class_type"
+                        class="block mt-1 w-50 rounded dark:bg-gray-700 dark:text-white " required autofocus
+                        autocomplete="class_type">
+                        <option value="IE">IE</option>
+                        <option value="SK">SK</option>
+                        <option value="teacher">教員</option>
+                    </select>
+                    <select id="class" name="class"
+                        class="block mt-1 w-50 rounded dark:bg-gray-700 dark:text-white" required autofocus
+                        autocomplete="class">
+                    </select>
+
                 </div>
-                <select id="class" name="class" class="block mt-1 w-50 rounded " autofocus autocomplete="class"
-                    style="background-color: white;">
-                    {{-- 教員 --}}
-                    <option value="校長">校長</option>
-                    <option value="教頭">教頭</option>
-                    <option value="教員">教員</option>
-                    {{-- IE --}}
-                    <option value="IE1A">IE1A</option>
-                    <option value="IE1B">IE1B</option>
-                    <option value="IE2A">IE2A</option>
-                    <option value="IE2B">IE2B</option>
-                    <option value="IE3A">IE3A</option>
-                    <option value="IE3B">IE3B</option>
 
-                    {{-- SK --}}
-                    <option value="SK1A">SK1A</option>
-                    <option value="SK1B">SK1B</option>
-                    <option value="SK2A">SK2A</option>
-                    <option value="SK2B">SK2B</option>
-                    <option value="SK3A">SK3A</option>
-                    <option value="SK3B">SK3B</option>
-
-
-                </select>
                 <x-input-error :messages="$errors->get('class')" class="mt-2" />
             </div>
             <script>

@@ -34,6 +34,7 @@ class RegisteredUserController extends Controller
             'student_id' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'name' => ['required', 'string', 'max:255'],
             'password_confirmation' => ['required', 'same:password'],
             'contact' => ['min:10', 'max:11', 'integer']
         ], [
@@ -42,6 +43,7 @@ class RegisteredUserController extends Controller
             'password.required' => 'パスワードを入力してください。',
             'password_confirmation.required' => 'パスワード確認を入力してください。',
             'password_confirmmation.same' => 'パスワード確認はパスワードと一致する必要があります',
+            'name.required' => '名前を入力してください。',
             'contact' => '不正の電話番号です。'
         ]);
 
