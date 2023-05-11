@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -31,15 +32,17 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'student_id' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'student_id' => ['required', 'string', 'max:255', 'unique:users,studentID'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'name' => ['required', 'string', 'max:255'],
             'password_confirmation' => ['required', 'same:password'],
-            'contact' => ['min:10', 'max:11', 'integer']
+            'contact' => ['min:10']
         ], [
             'student_id.required' => '学籍番号を入力してください。',
-            'email' => 'メールアドレスを入力してください。',
+            'student_id.unique' => '学籍番号がは既に存在します。',
+            'email.required' => 'メールアドレスを入力してください。',
+            'email.unique' => 'メールアドレスは既に存在します',
             'password.required' => 'パスワードを入力してください。',
             'password_confirmation.required' => 'パスワード確認を入力してください。',
             'password_confirmmation.same' => 'パスワード確認はパスワードと一致する必要があります',
@@ -57,7 +60,7 @@ class RegisteredUserController extends Controller
             'class' => $request->class
 
         ]);
-
+        Log::info($user);
         event(new Registered($user));
 
         Auth::login($user);

@@ -58,9 +58,10 @@ $classes = array_unique($classes);
         {{-- search bar --}}
         <div class="my-5 flex">
             <form action="search" method="GET">
-                <input type="text" class="seachWord rounded dark:bg-gray-700 dark:text-white" placeholder="search id or name..." name="nameID" />
+                <input type="text" class="seachWord rounded dark:bg-gray-700 dark:text-white"
+                    placeholder="search id or name..." name="nameID" />
                 <select name="class" id="class" class="rounded dark:bg-gray-700 dark:text-white">
-                    <option value=""selected hidden >class</option>
+                    <option value=""selected hidden>class</option>
                     @foreach ($classes as $cl)
                         <option value="{{ $cl }}" class="dark:bg-gray-700 dark:text-white">
                             {{ $cl }}
@@ -90,8 +91,10 @@ $classes = array_unique($classes);
 
         </div>
 
-        <table class="w-3/4 table-auto border-2 border-black bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600" id="table">
-            <thead class="border-2 border-black bg-black  dark:bg-gray-800 dark:text-white dark:border-gray-600">
+        <table
+            class="w-3/4 table-auto border-2 border-black bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
+            id="table">
+            <thead class="border-2 border-black bg-black  dark:bg-gray-950 dark:text-white dark:border-gray-600">
                 <tr id="th" class="text-white">
                     <th class="text-xl">学籍番号 </th>
                     <th class="text-xl">クラス </th>
@@ -106,12 +109,13 @@ $classes = array_unique($classes);
             @foreach ($items as $item)
                 <?php
                 //電話番号
-
+                
                 $formatted_number = substr($item->telnum, 0, 3) . '-' . substr($item->telnum, 3, 4) . '-' . substr($item->telnum, 7);
-
+                
                 ?>
                 <tr>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $item->studentID }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $item->studentID }}
+                    </td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $item->class }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $item->name }}</td>
                     <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $item->place }}</td>
