@@ -12,12 +12,97 @@
             </div>
 
             <!-- Class 項目追加のみ-->
-            <div>
+            {{-- <div>
                 <x-input-label for="class" :value="__('Class')" />
                 <x-text-input id="class" class="block mt-1 w-50" type="text" name="class" :value="old('class')"
                     required autofocus autocomplete="class" />
                 <x-input-error :messages="$errors->get('class')" class="mt-2" />
+            </div> --}}
+            <div>
+                <x-input-label for="class" :value="__('Class')" />
+                <div class="mt-1">
+                    <input type="radio" id="ie" name="class_type" value="IE" checked>
+                    <label for="ie" style="font-size: 16px; color: rgb(11, 10, 10)">IE</label>
+                    <input type="radio" id="sk" name="class_type" value="SK">
+                    <label for="sk" style="font-size: 16px; color:rgb(11, 10, 10)">SK</label>
+                    <input type="radio" id="teacher" name="class_type" value="teacher">
+                    <label for="sk" style="font-size: 16px; color: rgb(11, 10, 10)">教員</label>
+
+                </div>
+                <select id="class" name="class" class="block mt-1 w-50 rounded " required autofocus
+                    autocomplete="class" style="background-color: white;" required>
+                    {{-- 教員 --}}
+                    <option value="校長">校長</option>
+                    <option value="教頭">教頭</option>
+                    <option value="教員">教員</option>
+                    {{-- IE --}}
+                    <option value="IE1A">IE1A</option>
+                    <option value="IE1B">IE1B</option>
+                    <option value="IE2A">IE2A</option>
+                    <option value="IE2B">IE2B</option>
+                    <option value="IE3A">IE3A</option>
+                    <option value="IE3B">IE3B</option>
+
+                    {{-- SK --}}
+                    <option value="SK1A">SK1A</option>
+                    <option value="SK1B">SK1B</option>
+                    <option value="SK2A">SK2A</option>
+                    <option value="SK2B">SK2B</option>
+                    <option value="SK3A">SK3A</option>
+                    <option value="SK3B">SK3B</option>
+
+
+                </select>
+                <x-input-error :messages="$errors->get('class')" class="mt-2" />
             </div>
+
+            <script>
+                // ラジオボタンの選択状態に応じてselectの中身を変更する関数
+                function updateClassOptions() {
+                    const classType = document.querySelector('input[name="class_type"]:checked').value;
+                    const classSelect = document.getElementById('class');
+                    if (classType === 'IE') {
+                        classSelect.innerHTML = `
+                <option value=""selected hidden>選択</option>
+                <option value="IE1A">IE1A</option>
+                <option value="IE1A">IE1B</option>
+                <option value="IE2A">IE2A</option>
+                <option value="IE2B">IE2B</option>
+                <option value="IE3A">IE3A</option>
+                <option value="IE3B">IE3B</option>
+
+            `;
+                    } else if (classType === 'SK') {
+                        classSelect.innerHTML = `
+                <option value=""selected hidden>選択</option>
+                <option value="SK1A">SK1A</option>
+                <option value="SK1A">SK1B</option>
+                <option value="SK2A">SK2A</option>
+                <option value="SK2B">SK2B</option>
+                <option value="SK3A">SK3A</option>
+                <option value="SK3B">SK3B</option>
+
+            `;
+                    } else if (classType === 'teacher') {
+                        classSelect.innerHTML = `
+                <option value=""selected hidden>選択</option>
+                <option value="校長">校長</option>
+                <option value="教頭">教頭</option>
+                <option value="教員">教員</option>
+            `;
+                    }
+
+                }
+                // ラジオボタンの選択状態が変更された時にselectの中身を変更するように設定する
+                document.querySelectorAll('input[name="class_type"]').forEach(radio => {
+                    radio.addEventListener('change', updateClassOptions);
+                });
+                // 初期化時にもselectの中身を変更する
+                updateClassOptions();
+            </script>
+
+
+
         </div>
 
 
