@@ -37,7 +37,7 @@ $classes = array_unique($classes);
 
 <body>
 
-    <div class="flex flex-col  items-center  h-screen bg-gray-100  shadow">
+    <div class="flex flex-col  items-center  h-screen bg-gray-100 dark:bg-gray-900 shadow">
         <div
             class=" flex  w-full justify-end space-x-2 bg-black text-white border-b-2  border-white dark: text-xl py-2 px-4 gap-2">
 
@@ -53,28 +53,28 @@ $classes = array_unique($classes);
             </div>
 
         </div>
-        <h1 class="text-4xl m-5 font-bold underline text-shadow-2xl">災害掲示板</h1>
+        <h1 class="text-4xl m-5 font-bold underline text-shadow-2xl dark:text-white">災害掲示板</h1>
 
         {{-- search bar --}}
         <div class="my-5 flex">
             <form action="search" method="GET">
-                <input type="text" class="seachWord rounded" placeholder="search id or name..." name="nameID" />
-                <select name="class" id="class" class="rounded">
-                    <option value=""selected hidden>class</option>
+                <input type="text" class="seachWord rounded dark:bg-gray-700 dark:text-white" placeholder="search id or name..." name="nameID" />
+                <select name="class" id="class" class="rounded dark:bg-gray-700 dark:text-white">
+                    <option value=""selected hidden >class</option>
                     @foreach ($classes as $cl)
-                        <option value="{{ $cl }}">
+                        <option value="{{ $cl }}" class="dark:bg-gray-700 dark:text-white">
                             {{ $cl }}
                         </option>
                     @endforeach
                 </select>
-                <select name="status" class="rounded">
-                    <option value=""selected hidden>安否</option>
-                    <option value="1">危険</option>
-                    <option value="2">安全</option>
+                <select name="status" class="rounded dark:bg-gray-700 dark:text-white">
+                    <option value=""selected hidden class="dark:bg-gray-700 dark:text-white">安否</option>
+                    <option value="1" class="dark:bg-gray-700 dark:text-white">危険</option>
+                    <option value="2" class="dark:bg-gray-700 dark:text-white">安全</option>
                 </select>
 
                 <button id="" type="submit"
-                    class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 rounded hover:shadow-sm hover:translate-y-0.5 transform transition"
+                    class="clear-results dark:bg-white dark:text-black dark:hover:bg-white bg-black hover:bg-black text-white font-bold py-2 px-4 rounded hover:shadow-sm hover:translate-y-0.5 transform transition"
                     onclick="search()">
                     SEARCH
                 </button>
@@ -82,7 +82,7 @@ $classes = array_unique($classes);
             </form>
             <form action="listview">
                 <button type="submit"
-                    class="clear-results bg-black hover:bg-black text-white font-bold py-2 px-4 ml-1 rounded hover:shadow-sm hover:translate-y-0.5 transform transition"
+                    class="clear-results dark:bg-white dark:text-black dark:hover:bg-white bg-black hover:bg-black text-white font-bold py-2 px-4 ml-1 rounded hover:shadow-sm hover:translate-y-0.5 transform transition"
                     onclick="reload()">
                     CLEAR
                 </button>
@@ -90,8 +90,8 @@ $classes = array_unique($classes);
 
         </div>
 
-        <table class="w-3/4 table-auto border-2 border-black bg-white" id="table">
-            <thead class="border-2 border-black bg-black ">
+        <table class="w-3/4 table-auto border-2 border-black bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600" id="table">
+            <thead class="border-2 border-black bg-black  dark:bg-gray-800 dark:text-white dark:border-gray-600">
                 <tr id="th" class="text-white">
                     <th class="text-xl">学籍番号 </th>
                     <th class="text-xl">クラス </th>
@@ -106,19 +106,19 @@ $classes = array_unique($classes);
             @foreach ($items as $item)
                 <?php
                 //電話番号
-                
+
                 $formatted_number = substr($item->telnum, 0, 3) . '-' . substr($item->telnum, 3, 4) . '-' . substr($item->telnum, 7);
-                
+
                 ?>
                 <tr>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->studentID }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->class }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->name }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->place }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $item->message }}</td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">{{ $formatted_number }}
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $item->studentID }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $item->class }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $item->name }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $item->place }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $item->message }}</td>
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">{{ $formatted_number }}
                     </td>
-                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600">
+                    <td class="text-center text-lg font-semibold border-b-2 border-gray-600 ">
                         @if ($item->status == 1)
                             &#9989;
                         @else
