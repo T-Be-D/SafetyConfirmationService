@@ -18,21 +18,22 @@
                     required autofocus autocomplete="class" />
                 <x-input-error :messages="$errors->get('class')" class="mt-2" />
             </div> --}}
-            <div>
+
+            <div class="text-sm ">
                 <x-input-label for="class" :value="__('Class')" />
-                <div class="flex gap-4">
-                    <div class="flex">
-                        <input type="radio" id="it_radio" name="category" value="IT" checked>
-                        <label for="it_radio" style="font-size: 18px">IT</label>
-                    </div>
-                    <div class="flex">
-                        <input type="radio" id="game_radio" name="category" value="">
-                        <label for="game_radio" style="font-size: 18px">ゲーム</label>
-                    </div>
-                    <div class="flex">
-                        <input type="radio" id="other_radio" name="category" value="other">
-                        <label for="other_radio" style="font-size: 18px">その他</label>
-                    </div>
+                <div class="flex gap-1 py-1 ">
+
+                    <input type="radio" id="it_radio" name="category" value="IT" checked>
+                    <label for="it_radio">IT</label>
+
+
+                    <input type="radio" id="game_radio" name="category" value="">
+                    <label for="game_radio">ゲーム</label>
+
+
+                    <input type="radio" id="other_radio" name="category" value="other">
+                    <label for="other_radio">その他</label>
+
                 </div>
                 <div class="flex gap-2">
                     <select id="class_type" name="class_type"
