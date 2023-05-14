@@ -11,20 +11,20 @@
                 <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
             </div>
 
-            <div>
+            <div class="text-sm ">
                 <x-input-label for="class" :value="__('Class')" />
-                <div class="flex gap-4">
-                    <div class="flex">
+                <div class="flex gap-2">
+                    <div class="flex gap-1">
                         <input type="radio" id="it_radio" name="category" value="IT" checked>
-                        <label for="it_radio" style="font-size: 18px">IT</label>
+                        <label for="it_radio">IT</label>
                     </div>
-                    <div class="flex">
+                    <div class="flex gap-1">
                         <input type="radio" id="game_radio" name="category" value="GAME">
-                        <label for="game_radio" style="font-size: 18px">ゲーム</label>
+                        <label for="game_radio">ゲーム</label>
                     </div>
-                    <div class="flex">
+                    <div class="flex gap-1">
                         <input type="radio" id="other_radio" name="category" value="other">
-                        <label for="other_radio" style="font-size: 18px">その他</label>
+                        <label for="other_radio">その他</label>
                     </div>
                 </div>
                 <div class="flex gap-2">
