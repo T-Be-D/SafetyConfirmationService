@@ -6,7 +6,7 @@
 そして、絞り込み機能もあるため、クラス別や危険状態の生徒などすぐに確認出来ます。
 これにより、安否確認の効率化を図ることが出来ます。
 
-##技術スタック
+## 技術スタック
 ![Laravel](https://img.shields.io/badge/Laravel-v8.0-orange)
 ![MySQL](https://img.shields.io/badge/MySQL-v8.0-blue)
 ![Git](https://img.shields.io/badge/Git-v2.33.0-red)
