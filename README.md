@@ -21,4 +21,4 @@
 4. MySQL は autocommit (自動コミットモード)を無効化する方は　 autocommit を設定してください。
 5. アプリケーションキーを生成する: `php artisan key:generate`
 6. データベースマイグレーションを実行する: `php artisan migrate`
-7. 開発用サーバーを起動する: `php artisan serve`,`npm run dev`
+7. 開発用サーバーを起動する: `php artisan serve`&`npm run dev`
