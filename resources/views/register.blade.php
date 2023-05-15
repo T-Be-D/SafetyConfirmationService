@@ -11,7 +11,7 @@
                 <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
             </div>
 
-            <div class="text-sm ">
+            <div class="text-sm dark:text-white">
                 <x-input-label for="class" :value="__('Class')" />
                 <div class="flex gap-2">
                     <div class="flex gap-1">
